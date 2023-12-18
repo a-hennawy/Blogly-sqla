@@ -1,0 +1,22 @@
+{%extends 'base.html'%} {%block title%}Edit User{%endblock%} {%block content%}
+<h1>Edit a user</h1>
+
+<!-- form will already hold current data of the user, until updated -->
+<form action="/users/{{user.id}}" method="post">
+  <label for="">First Name</label>
+  <input type="text" name="first-name" value="{{user.first_name}}" />
+  <br />
+  <label for="">Last Name</label>
+  <input type="text" name="last-name" value="{{user.last_name}}" />
+  <br />
+  <label for="">Image URL</label>
+  <input type="url" name="image-url" value="{{user.image_url}}" />
+  <br />
+  <button>save</button>
+</form>
+
+<!-- go back to user details -->
+<form action="/users/{{user.id}}">
+  <button>Cancel</button>
+</form>
+{%endblock%}
