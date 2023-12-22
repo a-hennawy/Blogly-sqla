@@ -1,0 +1,18 @@
+{%extends 'base.html'%}{%block title%}Post detail{%endblock%}{%block content%}
+<div class="well">
+  <h1>{{post.title}}</h1>
+  <p class="lead">{{post.content}}</p>
+  <span class="small">{{post.created_at}}</span>
+</div>
+<div class="btn form-group">
+  <form action="/users/{{post.usr.id}}" class="btn">
+    <button class="btn">Cancel</button>
+  </form>
+  <form action="/posts/{{post.id}}/edit" class="btn">
+    <button class="btn btn-primary">Edit</button>
+  </form>
+  <form action="/posts/{{post.id}}/delete" class="btn">
+    <button class="btn btn-danger">Delete</button>
+  </form>
+</div>
+{%endblock%}

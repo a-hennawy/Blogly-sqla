@@ -1,18 +1,55 @@
 {%extends 'base.html'%} {%block title%}User Details{%endblock%} {%block
 content%}
-<img src="{{user.image_url}}" alt="" />
+<div>
+  <section class="media well">
+    <div class="media-left">
+      <img
+        src="{{user.image_url}}"
+        class="media-object img-circle"
+        style="width: 60px"
+        alt=""
+      />
+    </div>
 
-<h1>{{user.full_name}}</h1>
+    <div class="media-body">
+      <h4 class="media-heading">{{user.full_name}}</h4>
 
-<form action="/users/{{user.id}}/edit">
-  <button>Edit</button>
-</form>
+      <div class="container-fluid">
+        <form action="/users/{{user.id}}/edit">
+          <div class="form-group form-group-sm">
+            <button class="btn btn-info btn-sm">Edit</button>
+          </div>
+        </form>
 
-<form action="/users/{{user.id}}/delete">
-  <button>Delete</button>
-</form>
+        <form action="/users/{{user.id}}/delete">
+          <div class="form-group">
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <ul>
+      {%for post in user_posts %}
+      <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+      {%endfor%}
 
-<form action="/users">
-  <button>Back to users</button>
-</form>
+      <!-- <a href=""><li></li></a> -->
+      <!-- <li>i am a post</li>
+      <li>i am a post</li> -->
+    </ul>
+    <form action="/users/{{user.id}}/posts/new">
+      <div class="form-group form-group-lg">
+        <button class="btn btn-primary">Add post</button>
+      </div>
+    </form>
+  </section>
+
+  <div>
+    <form action="/users">
+      <div class="form-group form-group-lg">
+        <button class="btn btn-info">Back to users</button>
+      </div>
+    </form>
+  </div>
+</div>
 {%endblock%}

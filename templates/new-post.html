@@ -1,0 +1,38 @@
+{%extends 'base.html'%}{%block title%}Make a new post{%endblock%}{%block
+content%}
+<section class="container-fluid">
+  <h1>Make a new post</h1>
+
+  <div class="form-group">
+    <form action="/users/{{user.id}}/posts/new" method="post">
+      <div>
+        <label for="">Title</label>
+        <input
+          type="text"
+          name="post-title"
+          class="form-control"
+          id="post-title"
+        />
+      </div>
+      <div>
+        <label for="">content</label>
+        <input
+          type="text"
+          name="post-content"
+          class="form-control input-lg"
+          id="post-content"
+        />
+      </div>
+      <div class="btn">
+        <button class="btn btn-primary">Add</button>
+      </div>
+    </form>
+
+    <form action="/users/{{user.id}}">
+      <div class="btn">
+        <button class="btn btn-default">Cancel</button>
+      </div>
+    </form>
+  </div>
+</section>
+{%endblock%}
