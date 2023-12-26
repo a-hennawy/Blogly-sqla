@@ -1,0 +1,20 @@
+{%extends '/base-file/base.html'%}{%block title%}Edit tag{%endblock%}{%block
+content%}
+<div class="container well">
+  <h1>{{chosen_tag.name}}</h1>
+  <div class="form-group">
+    <form action="/tags/{{chosen_tag.id}}/edit" method="post">
+      <label for="">Name</label>
+      <input
+        type="text"
+        class="from-control"
+        value="{{chosen_tag.name}}"
+        name="tag-name"
+      />
+      <div class="btn">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock%}

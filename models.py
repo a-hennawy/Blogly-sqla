@@ -60,8 +60,39 @@ class Post(db.Model):
                         db.ForeignKey('users.id'),
                         nullable=False)
 
-    usr = db.relationship('User', backref='post')
+    usr = db.relationship(
+        'User', cascade='all, delete',  backref='posts')
 
     # @property
-    def time_format(self):
-        return self.created_at.strftime("%d/%m/%Y, %-I:%M %p")
+    # def time_format(self):
+    #     return self.created_at.strftime("%d/%m/%Y, %-I:%M %p")
+
+
+class PostTag(db.Model):
+
+    __tablename__ = "post_tag"
+
+    post_id = db.Column(db.Integer,
+                        db.ForeignKey('posts.id'),
+                        primary_key=True)
+
+    tag_id = db.Column(db.Integer,
+                       db.ForeignKey('tags.id'),
+                       primary_key=True)
+
+
+class Tag(db.Model):
+
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer,
+                   primary_key=True)
+    name = db.Column(db.Text,
+                     unique=True)
+    posts = db.relationship('Post',
+                            cascade="all,delete",
+                            secondary="post_tag",
+                            backref="tags")
+
+    def __repr__(self):
+        return (f" Tag {self.id} {self.name}")

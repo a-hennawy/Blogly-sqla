@@ -1,0 +1,52 @@
+{%extends '/base-file/base.html'%}{%block title%}Edit Post{%endblock%} {%block
+content%}
+
+<div class="container well">
+  <h1>Edit Post</h1>
+  <form action="/posts/{{post.id}}/edit" method="post">
+    <div class="form-group well">
+      <label for="">Title</label>
+      <input
+        type="text"
+        name="post-title"
+        class="form-control"
+        value="{{post.title}}"
+      />
+    </div>
+    <div class="form-group well">
+      <label for="">Content</label>
+      <input
+        type="text"
+        name="post-content"
+        class="form-control"
+        value="{{post.content}}"
+      />
+    </div>
+    <div class="">
+      Tags: <br />
+      {%for tag_obj in post.tags%}
+      <div>
+        <a href="/tags/{{tag_obj.id}}" class="btn-group">
+          <button class="btn btn-link btn-sm">#{{tag_obj.name}}</button>
+        </a>
+
+        <form action="/tags/<int:tag_id>/delete">
+          <button class="btn btn-danger btn-sm">x</button>
+        </form>
+      </div>
+
+      <br />
+      {%endfor%}
+    </div>
+    <div class="btn">
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </form>
+  <form action="/posts/{{post.id}}">
+    <div class="btn">
+      <button class="btn btn-default">Cancel</button>
+    </div>
+  </form>
+</div>
+
+{%endblock%}

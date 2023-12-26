@@ -1,5 +1,5 @@
-{%extends 'base.html'%}{%block title%}Make a new post{%endblock%}{%block
-content%}
+{%extends '/base-file/base.html'%}{%block title%}Make a new
+post{%endblock%}{%block content%}
 <section class="container-fluid">
   <h1>Make a new post</h1>
 
@@ -23,6 +23,14 @@ content%}
           id="post-content"
         />
       </div>
+
+      <div>
+        {%for tag_obj in tags%}
+        <input type="checkbox" name="post-tags" value="{{tag_obj.name}}" />
+        <label for="">{{tag_obj.name}}</label><br />
+        {%endfor%}
+      </div>
+
       <div class="btn">
         <button class="btn btn-primary">Add</button>
       </div>

@@ -1,0 +1,38 @@
+{%extends '/base-file/base.html'%}{%block title%}Tagged posts{%endblock%}{%block
+content%}
+<div class="container well">
+  <h1>{{chosen_tag.name}}</h1>
+  <div class="list-group">
+    {%for post_obj in chosen_tag.posts%}
+    <div class="container-fluid">
+      <a href="/posts/{{post_obj.id}}" class="list-group-item"
+        >{{post_obj.title}}
+
+        <div class="btn">
+        <form action="/posts/{{post_obj.id}}/edit">
+          
+            <button class="pull-right btn btn-info btn-sm">Edit</button>
+          </div>
+        </form>
+      </a>
+    </div>
+
+    {%endfor%}
+  </div>
+  <div class=>
+    <div class="btn">
+      <form action="/tags/{{chosen_tag.id}}/delete">
+      <button class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+    <div>
+      <form action="/tags" >
+      <button class="btn btn-primary">Back to tags</button>
+    </form>
+  </div>
+    
+    
+  </div>
+</div>
+
+{%endblock%}

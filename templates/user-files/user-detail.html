@@ -1,5 +1,5 @@
-{%extends 'base.html'%} {%block title%}User Details{%endblock%} {%block
-content%}
+{%extends '/base-file/base.html'%} {%block title%}User Details{%endblock%}
+{%block content%}
 <div>
   <section class="media well">
     <div class="media-left">
@@ -28,9 +28,11 @@ content%}
         </form>
       </div>
     </div>
-    <ul>
+    <ul class="list-group">
       {%for post in user_posts %}
-      <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+      <li class="list-group-item">
+        <a href="/posts/{{post.id}}">{{post.title}}</a>
+      </li>
       {%endfor%}
 
       <!-- <a href=""><li></li></a> -->

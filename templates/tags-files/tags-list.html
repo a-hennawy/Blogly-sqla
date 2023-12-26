@@ -1,0 +1,25 @@
+{%extends '/base-file/base.html'%}{%block title%}Tags list{%endblock%}{%block
+content%}
+
+<div class="container list-group">
+  <h1>Tags</h1>
+  <div class="list-group">
+    {%for tag in tags%}
+
+    <a href="/tags/{{tag.id}}" class="list-group-item">{{tag.name}}</a>
+
+    {%endfor%}
+  </div>
+  <div class="btn btn-group">
+    <form action="/tags/new">
+      <button class="btn btn-primary btn-group">Add tag</button>
+    </form>
+    <div class="btn btn-group">
+      <form action="/users">
+        <button class="btn btn-default btn-group">Visit users</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

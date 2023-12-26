@@ -1,0 +1,26 @@
+{%extends '/base-file/base.html'%}{%block title%}Add a tag{%endblock%}{%block
+content%}
+<div class="container">
+  <h1>Create a tag</h1>
+  <div class="form-group well">
+    <form action="/tags/new" method="post">
+      <label for="">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="tag-name"
+        placeholder="ِenter a tag name"
+      />
+      <div class="btn">
+        <button class="btn btn-primary">Add</button>
+      </div>
+    </form>
+    <form action="/tags">
+      <div class="btn">
+        <button class="btn btn-default">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{%endblock%}

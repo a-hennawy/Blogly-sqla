@@ -1,9 +1,22 @@
-{%extends 'base.html'%}{%block title%}Post detail{%endblock%}{%block content%}
+{%extends '/base-file/base.html'%}{%block title%}Post detail{%endblock%}{%block
+content%}
 <div class="well">
   <h1>{{post.title}}</h1>
   <p class="lead">{{post.content}}</p>
   <span class="small">{{post.created_at}}</span>
+  <br />
+
+  <div class="">
+    Tags: {%for tag_obj in post.tags%}
+
+    <a href="/tags/{{tag_obj.id}}" class="btn-group">
+      <button class="btn btn-link btn-sm">#{{tag_obj.name}}</button>
+    </a>
+
+    {%endfor%}
+  </div>
 </div>
+
 <div class="btn form-group">
   <form action="/users/{{post.usr.id}}" class="btn">
     <button class="btn">Cancel</button>
